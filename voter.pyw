@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from web3 import Web3, HTTPProvider
-from conduct_interfaces.conduct_election import showConductElectionInterface
+from voter_interfaces.election_list import showElectionListInterface
 from eth_keys import keys
 
 def import_wallet():
@@ -32,13 +32,12 @@ def import_wallet():
         return
     
     root.destroy()
-    showConductElectionInterface(private_key, getWalletAddress(private_key[2:]))
-    
+    showElectionListInterface(private_key, getWalletAddress(private_key[2:]))
 
 # Create the main window
 root = tk.Tk()
 root.geometry('1000x200')
-root.title("Conduct : Wallet Import")
+root.title("Voter : Wallet Import")
 
 # Set a red and black color theme
 root.configure(bg='#f2f2f2')

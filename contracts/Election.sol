@@ -97,9 +97,9 @@ contract Election{
         return electionName;
     }
 
-    function hasVoted() external returns(bool){
+    function hasVoted(address voterAddress) external returns(bool){
         for( uint i = 0; i < voters.length; i++ ){
-            if( voters[i] == msg.sender ){
+            if( voters[i] == voterAddress ){
                 return true;
             }
         }

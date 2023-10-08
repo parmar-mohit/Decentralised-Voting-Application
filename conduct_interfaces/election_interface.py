@@ -18,6 +18,7 @@ def showElectionInterface(election_name,private_key,wallet_address):
         
         addCandidate(candidate_name,my_contract,private_key,wallet_address)
         messagebox.showinfo("Candidate Info","Candidate has been Added Sucessfully")
+        candidate_entry.delete(0,tk.END)
         refresh_candidates()
 
     def refresh_candidates():
