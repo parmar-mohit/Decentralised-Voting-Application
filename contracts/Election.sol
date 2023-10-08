@@ -7,6 +7,7 @@ contract Election{
     bool electionStart;
     bool electionEnd;
     address owner;
+    address[] voters;
 
     constructor(string memory election){
         electionStart = false;
@@ -52,14 +53,17 @@ contract Election{
         return false;
     }
 
-    function voteCandidate(string memory candidateName) external returns(bool){
+    function voteCandidate(string memory candidateName) external{
         if( electionStart == true && electionEnd == false ){
+            for( uint i = 0; i < voters.length; i++ ){
+                if( voters[i] == msg.sender ){
+                    return;
+                }
+            }
+
             candidatesVotes[candidateName] += 1;
-
-            return true; 
+            voters.push(msg.sender);
         }
-
-        return false;
     }
 
     function getCandidates() external view returns(string[] memory){
@@ -87,5 +91,19 @@ contract Election{
         }
 
         return winner;
+    }
+
+    function getElectionName() external returns(string memory){
+        return electionName;
+    }
+
+    function hasVoted() external returns(bool){
+        for( uint i = 0; i < voters.length; i++ ){
+            if( voters[i] == msg.sender ){
+                return true;
+            }
+        }
+        
+        return false;
     }
 }

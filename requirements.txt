@@ -1,0 +1,4 @@
+tkinter
+web3
+eth-keys
+py-solc-x
