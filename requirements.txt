@@ -1,4 +1,4 @@
-tkinter
+tk-tools
 web3
 eth-keys
 py-solc-x
